@@ -13,4 +13,4 @@ then
 fi
 
 
-vault write -address=$VAULT_BASE_URL value=$2
+vault write $1 -address=$VAULT_BASE_URL value=$2
