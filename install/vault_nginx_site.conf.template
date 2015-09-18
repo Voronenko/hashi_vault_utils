@@ -1,0 +1,36 @@
+server {
+  listen 443 ssl;
+  server_name vault.YOURDOMAIN.COM;
+
+  ssl_certificate YOUR_SSL_CERTIFICATE.crt;
+  ssl_certificate_key YOUR_SSL_CERTIFICATE_KEY.key;
+
+  location / {
+    proxy_pass http://127.0.0.1:8200;
+    proxy_set_header Host $host;
+    expires -1;
+  }
+
+  #ssl config per https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+
+  ssl_ciphers "EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA256:EECDH+ECDSA+SHA384:EECDH+ECDSA+SHA256:EECDH+aRSA+SHA384:EDH+aRSA+AESGCM:EDH+aRSA+SHA256:EDH+aRSA:EECDH:!aNULL:!eNULL:!MEDIUM:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS:!RC4:!SEED";
+  ssl_prefer_server_ciphers on;
+
+  ssl_dhparam dhparam.pem;
+
+  #only supported since 1.3.7
+  ssl_stapling on;
+  ssl_stapling_verify on;
+
+  # Optimize SSL by caching session parameters for 10 minutes. This cuts down on the number of expensive SSL handshakes.
+  # The handshake is the most CPU-intensive operation, and by default it is re-negotiated on every new/parallel connection.
+  # By enabling a cache (of type "shared between all Nginx workers"), we tell the client to re-use the already negotiated state.
+  # Further optimization can be achieved by raising keepalive_timeout, but that shouldn't be done unless you serve primarily HTTPS.
+  ssl_session_cache    shared:SSL:10m; # a 1mb cache can hold about 4000 sessions, so we can hold 40000 sessions
+  ssl_session_timeout  10m;
+
+  add_header Strict-Transport-Security max-age=63072000;
+  add_header X-Frame-Options DENY;
+  add_header X-Content-Type-Options nosniff;
+}
