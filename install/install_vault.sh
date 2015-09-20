@@ -24,13 +24,13 @@ fi
 
 apt-get install -y curl unzip
 
-rm /opt/vault_${VAULT_VERSION}_linux_amd64.zip
+rm /opt/vault_${VAULT_VERSION}_linux_${PLATFORM}.zip
 
-curl -L "https://dl.bintray.com/mitchellh/vault/vault_${VAULT_VERSION}_linux_amd64.zip" > /opt/vault_${VAULT_VERSION}_linux_${PLATFORM}.zip
+curl -L "https://dl.bintray.com/mitchellh/vault/vault_${VAULT_VERSION}_linux_${PLATFORM}.zip" > /opt/vault_${VAULT_VERSION}_linux_${PLATFORM}.zip
 
 mkdir -p $VAULT_PATH
 
-unzip /opt/vault_${VAULT_VERSION}_linux_amd64.zip -d $VAULT_PATH
+unzip /opt/vault_${VAULT_VERSION}_linux_${PLATFORM}.zip -d $VAULT_PATH
 
 chmod 0755 $VAULT_PATH/vault
 chown root:root $VAULT_PATH/vault
