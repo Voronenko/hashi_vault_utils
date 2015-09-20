@@ -187,12 +187,13 @@ As we plan to store secrets for saying multiple projects, we should be able to c
 Policies in Vault are formatted with HCL. HCL is a human-readable configuration format that is also JSON-compatible, so you can use JSON as well. An example policy is shown below:
 
 <pre>
-path "secret/project/name*" {
+path "secret/project/name" {
   policy = "read"
 }
 </pre>
 
 It specify path, like we have in some tree structure, wildcards are supported.
+If you provide access to specific part of the tree, you also provide the same access to all subnodes, unless you override it.
 
 Policy is registered with *policy-write* command
 <pre>
