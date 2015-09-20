@@ -56,7 +56,9 @@ then
   echo syntax: vault-server /PATH/TO/VAULT/HCL/CONFIG optional_flags
   exit 1
 fi
-vault server -config=\$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8 \$9
+BASEDIR=\$(dirname \$0)
+cd \$BASEDIR
+./vault server -config=\$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8 \$9
 EOF
 
 chmod 0755 $VAULT_PATH/vault-server
@@ -74,6 +76,9 @@ script
   exec $VAULT_PATH/vault-server ${VAULT_PATH}/vault-config.hcl >>/var/log/vault.log 2>&1
 end script
 EOF
+
+echo linking vault binary to /usr/local/bin/vault
+sudo ln -s $VAULT_PATH/vault /usr/local/bin/vault
 
 service vault-server start
 cat /var/log/vault.log

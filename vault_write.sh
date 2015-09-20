@@ -12,5 +12,5 @@ then
   exit 1
 fi
 
-
-vault write $1 -address=$VAULT_BASE_URL value=$2
+echo vault write -address=$VAULT_BASE_URL $1 value=$2
+vault write -address=$VAULT_BASE_URL $1 value=$2

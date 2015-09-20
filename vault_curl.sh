@@ -12,6 +12,7 @@ then
   exit 1
 fi
 
+echo curl -H "X-Vault-Token: $1" -X GET $VAULT_BASE_URL/v1/$2
 
 curl \
 -H "X-Vault-Token: $1" \
