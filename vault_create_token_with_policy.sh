@@ -6,5 +6,7 @@ then
  exit 1
 fi
 
-echo vault token-create -address=$VAULT_BASE_URL -policy="$1"
-vault token-create -address=$VAULT_BASE_URL -policy="$1"
+TTL=${2-175000h}
+
+echo vault token-create -address=$VAULT_BASE_URL -policy="$1" -lease="$TTL"
+vault token-create -address=$VAULT_BASE_URL -policy="$1" -lease="$TTL"
