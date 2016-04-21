@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VAULT_VERSION=${VAULT_VERSION-0.1.2}
+VAULT_VERSION=${VAULT_VERSION-0.5.2}
 VAULT_PATH=/opt/vault_$VAULT_VERSION
 UNAME=`uname -m`
 
@@ -26,7 +26,7 @@ apt-get install -y curl unzip
 
 rm /opt/vault_${VAULT_VERSION}_linux_${PLATFORM}.zip
 
-curl -L "https://dl.bintray.com/mitchellh/vault/vault_${VAULT_VERSION}_linux_${PLATFORM}.zip" > /opt/vault_${VAULT_VERSION}_linux_${PLATFORM}.zip
+curl -L "https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_${PLATFORM}.zip" > /opt/vault_${VAULT_VERSION}_linux_${PLATFORM}.zip
 
 mkdir -p $VAULT_PATH
 
