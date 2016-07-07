@@ -16,4 +16,5 @@ fi
 
 VALUE=`cat $2`
 
+
 vault write --address="$VAULT_BASE_URL" $1 value="$VALUE"
