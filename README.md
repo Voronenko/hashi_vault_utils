@@ -19,7 +19,7 @@ Vault by HashiCorp is one of the tools that might provide acceptable level of se
 - store secrets in vault
 - access secrets in vault
 
-# Installing
+# Installing Manually
 
 Formal installation steps are covered by this article: [https://vaultproject.io/docs/install/](https://vaultproject.io/docs/install/)
 For purposes of the demo article let me provide semi automated script, that installs vault *0.1.2* into /opt/vault_0.1.2 folder , configures it to listen on localhost port 8200 and registers it as a service called vault-server
@@ -111,7 +111,12 @@ cat /var/log/vault.log
 
 </pre>
 
-Check the installation:
+
+# Installing automatically with Ansible
+
+See [https://github.com/softasap/sa-hashicorp-vault](https://github.com/softasap/sa-hashicorp-vault)  Ansible Role for unattended Vault installation
+
+# Check the installation:
 <pre>
 ./vault_status.sh
 Error checking seal status: Error making API request.
