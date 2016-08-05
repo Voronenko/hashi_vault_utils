@@ -336,6 +336,17 @@ Some files just help using existing vault functionality in a more handy way:
 - vault_write\_file.sh writes secret by key (first parameter) and stores content's of text file provided as second parameter
 - vault_curl.sh can be used to test http api. First parameter - access token, second parameter secret key to read
 
+
+# Devops: usage with ansible
+
+Lookup plugin:
+[github.com/Voronenko/ansible-developer_recipes/blob/master/ansible_extras/lookup_plugins/sa_hashi_vault.py](https://github.com/Voronenko/ansible-developer_recipes/blob/master/ansible_extras/lookup_plugins/sa_hashi_vault.py)
+
+
+Action module:
+[github.com/Voronenko/ansible-developer_recipes/blob/master/ansible_extras/action_plugins/sa_hashi_vault.py](https://github.com/Voronenko/ansible-developer_recipes/blob/master/ansible_extras/action_plugins/sa_hashi_vault.py)
+
+
 # Points of interest
 
 This covers only very basic aspects to start using vault in your organization, but could be a  nice first step to move forward.
