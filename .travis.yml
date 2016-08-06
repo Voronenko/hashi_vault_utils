@@ -16,17 +16,18 @@ before_install:
   - 'git clone https://github.com/sstephenson/bats.git'
   - 'mkdir -p bin && cd bats && ./install.sh ../bin & cd ../'
   - 'export HOME_DIR=$PWD'
-  - 'export PATH=$HOME_DIR:$PWD/bin:$PATH'
+  - 'export PATH=$HOME_DIR:$PWD/bin/bin:$PATH'
     # Pull container
-  - 'sudo docker pull sjourdan/vault'
-  - 'export VAULT_TOKEN=`docker run -d -p 8200:8200 --hostname vault --name vault sjourdan/vault`'
-  - 'echo VAULT_TOKEN - $VAULT_TOKEN'
+  - 'sudo docker pull voronenko/vault'
+  - 'export ROOT_TOKEN=abfd0e04-7922-6850-e1bd-f02c325f1e2c'
+  - 'docker run -d -p 8200:8200 --hostname vault --name vault voronenko/vault'
+  - 'echo ROOT_TOKEN - $ROOT_TOKEN'
   - 'export VAULT_ADDR=http://$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' vault):8200'
   - 'echo VAULT_ADDR - $VAULT_ADDR'
+script:
   # execute tests
   - 'tests/vault.bats'
 
-script:
   # Clean up
   - sudo docker stop "vault"
   - sudo docker rm "vault"
