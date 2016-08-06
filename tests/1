@@ -1,0 +1,6 @@
+Error initializing Vault: Error making API request.
+
+URL: PUT http://172.17.0.2:8200/v1/sys/init
+Code: 400. Errors:
+
+* Vault is already initialized

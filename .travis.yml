@@ -1,0 +1,30 @@
+
+---
+sudo: required
+
+# whitelist
+branches:
+  only:
+    - master
+    - develop
+
+services:
+  - docker
+
+before_install:
+  # Get shell testing framework
+  - 'git clone https://github.com/sstephenson/bats.git'
+  - 'mkdir -p bin && cd bats && ./install.sh ../bin & cd ../'
+  - 'export HOME_DIR=$PWD'
+  - 'export PATH=$HOME_DIR:$PWD/bin:$PATH'
+    # Pull container
+  - 'sudo docker pull sjourdan/vault'
+  - 'export VAULT_TOKEN=`docker run -d -p 8200:8200 --hostname vault --name vault sjourdan/vault`'
+  - 'echo VAULT_TOKEN - $VAULT_TOKEN'
+  - 'export VAULT_ADDR=http://$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' vault):8200'
+  - 'echo VAULT_ADDR - $VAULT_ADDR'
+
+script:
+  # Clean up
+  - sudo docker stop "vault"
+  - sudo docker rm "vault"
