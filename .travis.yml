@@ -22,10 +22,10 @@ before_install:
   - "echo VAULT_ADDR - $VAULT_ADDR"
   - "wget -O $HOME_DIR/vault_0.6.0_linux_amd64.zip https://releases.hashicorp.com/vault/0.6.0/vault_0.6.0_linux_amd64.zip"
   - "unzip -d $HOME_DIR/tests $HOME_DIR/vault_0.6.0_linux_amd64.zip && rm $HOME_DIR/vault_0.6.0_linux_amd64.zip && chmod 755 $HOME_DIR/tests/vault"
-  - "alias vault=$HOME_DIR/tests/vault"
 script:
   # execute tests
-  - "export PATH=$HOME_DIR:$PWD/bin/bin:$PATH"
+  - "$HOME_DIR/tests/vault --version"
+  - "export PATH=$HOME_DIR:$HOME_DIR/tests:$PWD/bin/bin:$PATH"
   - '$HOME_DIR/bin/bin/bats $HOME_DIR/tests/vault.bats'
 
   # Clean up
