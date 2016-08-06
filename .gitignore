@@ -3,3 +3,4 @@ demo_rsa
 demo_rsa.pub
 bats
 bin
+tests/vault

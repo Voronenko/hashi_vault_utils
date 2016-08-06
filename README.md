@@ -1,7 +1,10 @@
 Using Vault by HashiCorp to secure your deployment secrets
-=======================================
+==========================================================
 
 Educational repository demonstrating approaches for safe secure deployment of passwords, api keys etc
+
+
+[![Build Status](https://travis-ci.org/voronenko/hashi_vault_utils.svg?branch=master)](https://travis-ci.org/voronenko/hashi_vault_utils)
 
 # Background
 "Don’t Check Passwords into Source Control or Hard-Code Them
