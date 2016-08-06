@@ -349,6 +349,13 @@ Lookup plugin:
 Action module:
 [github.com/Voronenko/ansible-developer_recipes/blob/master/ansible_extras/action_plugins/sa_hashi_vault.py](https://github.com/Voronenko/ansible-developer_recipes/blob/master/ansible_extras/action_plugins/sa_hashi_vault.py)
 
+Galaxy role:
+[softasap/sa-hashicorp-vault](https://galaxy.ansible.com/softasap/sa-hashicorp-vault/)
+
+Standalone ansible deployment:
+[sa-hashicorp-vault box example](https://github.com/softasap/sa-hashicorp-vault/tree/master/box-example)
+
+
 
 # Points of interest
 
