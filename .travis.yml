@@ -13,7 +13,7 @@ services:
 before_install:
   - "export HOME_DIR=$PWD"
   - "git clone https://github.com/sstephenson/bats.git"
-  - "mkdir -p bin && cd bats && ./install.sh ../bin & cd ../"
+  - "mkdir -p bin && cd bats && ./install.sh ../bin"
   - "sudo docker pull voronenko/vault"
   - "export ROOT_TOKEN=abfd0e04-7922-6850-e1bd-f02c325f1e2c"
   - "docker run -d -p 8200:8200 --hostname vault --name vault voronenko/vault"
