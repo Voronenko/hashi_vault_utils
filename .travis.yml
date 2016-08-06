@@ -25,8 +25,8 @@ before_install:
   - "alias vault=$HOME_DIR/tests/vault"
 script:
   # execute tests
-  - "export PATH=$HOME_DIR:$PWD/bin/bin:$PATH"  
-  - '$HOME_DIR/tests/vault.bats'
+  - "export PATH=$HOME_DIR:$PWD/bin/bin:$PATH"
+  - '$HOME_DIR/bin/bin/bats $HOME_DIR/tests/vault.bats'
 
   # Clean up
   - sudo docker stop "vault"
