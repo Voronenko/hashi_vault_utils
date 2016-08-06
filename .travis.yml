@@ -23,6 +23,8 @@ before_install:
   - 'echo VAULT_TOKEN - $VAULT_TOKEN'
   - 'export VAULT_ADDR=http://$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' vault):8200'
   - 'echo VAULT_ADDR - $VAULT_ADDR'
+  # execute tests
+  - 'tests/vault.bats'
 
 script:
   # Clean up
