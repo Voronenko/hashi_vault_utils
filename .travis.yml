@@ -20,7 +20,7 @@ before_install:
   - "echo ROOT_TOKEN - $ROOT_TOKEN"
   - "export VAULT_ADDR=http://$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' vault):8200"
   - "echo VAULT_ADDR - $VAULT_ADDR"
-  - "wget https://releases.hashicorp.com/vault/0.6.0/vault_0.6.0_linux_amd64.zip"
+  - "wget -O $HOME_DIR/vault_0.6.0_linux_amd64.zip https://releases.hashicorp.com/vault/0.6.0/vault_0.6.0_linux_amd64.zip"
   - "unzip -d $HOME_DIR/tests $HOME_DIR/vault_0.6.0_linux_amd64.zip && rm $HOME_DIR/vault_0.6.0_linux_amd64.zip && chmod 755 $HOME_DIR/tests/vault"
   - "alias vault=$HOME_DIR/tests/vault"
 script:
