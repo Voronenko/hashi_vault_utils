@@ -2,7 +2,11 @@
 
 @test "vault_status.sh works " {
   result="$(vault_status.sh | grep Sealed)"
-  [ "$result" == "Sealed: false" ]
+  if [ -z "$VAULT_API_FAMILY" ]; then
+    [ "$result" == "Sealed          false" ]
+  else
+    [ "$result" == "Sealed: false" ]
+  fi
 }
 
 @test "vault_init.sh works " {

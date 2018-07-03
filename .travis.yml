@@ -23,7 +23,7 @@ before_install:
   - "mkdir -p bin && cd bats && ./install.sh ../bin"
   - "sudo docker pull voronenko/vault:$vault"
   - "export ROOT_TOKEN=abfd0e04-7922-6850-e1bd-f02c325f1e2c"
-  - "docker run -d -p 8200:8200 --hostname vault --name vault voronenko/vault"
+  - "docker run -d -p 8200:8200 --hostname vault --name vault voronenko/vault:${vault}"
   - "echo ROOT_TOKEN - $ROOT_TOKEN"
   - "export VAULT_ADDR=http://$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' vault):8200"
   - "echo VAULT_ADDR - $VAULT_ADDR"
