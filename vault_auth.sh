@@ -34,6 +34,8 @@ then
 fi
 
 
+echo vault login -address=$VAULT_BASE_URL CENSORED
+vault login -address=$VAULT_BASE_URL $TOKEN
 
-echo vault auth -address=$VAULT_BASE_URL CENSORED
-vault auth -address=$VAULT_BASE_URL $TOKEN
+#echo vault auth -address=$VAULT_BASE_URL CENSORED
+#vault auth -address=$VAULT_BASE_URL $TOKEN

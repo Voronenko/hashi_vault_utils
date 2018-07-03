@@ -33,6 +33,8 @@ then
 
 fi
 
+echo vault operator unseal -address=$VAULT_BASE_URL CENSORED
+vault operator unseal -address=$VAULT_BASE_URL ${unseal_key}
 
-echo vault unseal -address=$VAULT_BASE_URL CENSORED
-vault unseal -address=$VAULT_BASE_URL ${unseal_key}
+#echo vault unseal -address=$VAULT_BASE_URL CENSORED
+#vault unseal -address=$VAULT_BASE_URL ${unseal_key}

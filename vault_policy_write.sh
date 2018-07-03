@@ -14,5 +14,9 @@ then
   exit 1
 fi
 
-echo vault policy-write --address="$VAULT_BASE_URL" $1 $2
-vault policy-write --address="$VAULT_BASE_URL" $1 $2
+echo vault policy write --address="$VAULT_BASE_URL" $1 $2
+vault policy write --address="$VAULT_BASE_URL" $1 $2
+
+
+#echo vault policy-write --address="$VAULT_BASE_URL" $1 $2
+#vault policy-write --address="$VAULT_BASE_URL" $1 $2
