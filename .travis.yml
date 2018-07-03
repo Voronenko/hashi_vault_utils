@@ -4,9 +4,9 @@ sudo: required
 env:
   - vault='0.10.3'
   - vault='0.9.6'
-    VAULT_API_FAMILY='0.6'
+    VAULT_API_FAMILY='0_9'
   - vault='0.6.0'
-    VAULT_API_FAMILY='0.6'
+    VAULT_API_FAMILY='0_6'
 
 # whitelist
 #branches:
@@ -33,7 +33,7 @@ script:
   # execute tests
   - "$HOME_DIR/tests/vault --version"
   - "export PATH=$HOME_DIR:$HOME_DIR/tests:$PWD/bin/bin:$PATH"
-  - '$HOME_DIR/bin/bin/bats $HOME_DIR/tests/vault.bats'
+  - '$HOME_DIR/bin/bin/bats $HOME_DIR/tests/vault${VAULT_API_FAMILY}.bats'
   - '$HOME_DIR/bin/bin/bats $HOME_DIR/tests/print_test.sh'
 
   # Clean up

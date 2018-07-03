@@ -2,7 +2,7 @@
 
 @test "vault_status.sh works " {
   result="$(vault_status.sh | grep Sealed)"
-  [ "$result" == "Sealed          false" ]
+  [ "$result" == "Sealed: false" ]
 }
 
 @test "vault_init.sh works " {
