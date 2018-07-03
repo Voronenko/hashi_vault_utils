@@ -46,6 +46,6 @@
 }
 
 @test "vault_unseal.sh works " {
-  result="$(vault_unseal.sh zz | grep already)"
+  result="$(vault_unseal.sh abfd0e04-7922-6850-e1bd-f02c325f1e2c | grep already)"
   [ "$result" == "Vault is already unsealed." ]
 }
