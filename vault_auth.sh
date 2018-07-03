@@ -33,7 +33,7 @@ then
   read_secret TOKEN
 fi
 
-if [[ -z "$VAULT_API_FAMILY" ]]; then
+if [ -z "$VAULT_API_FAMILY" ]; then
 echo vault login -address=$VAULT_BASE_URL CENSORED
 vault login -address=$VAULT_BASE_URL $TOKEN
 else

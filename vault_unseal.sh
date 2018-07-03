@@ -33,7 +33,7 @@ then
 
 fi
 
-if [[ -z "$VAULT_API_FAMILY" ]]; then
+if [ -z "$VAULT_API_FAMILY" ]; then
 echo vault operator unseal -address=$VAULT_BASE_URL CENSORED
 vault operator unseal -address=$VAULT_BASE_URL ${unseal_key}
 else
