@@ -35,6 +35,7 @@ script:
   - "$HOME_DIR/tests/vault --version"
   - "export PATH=$HOME_DIR:$HOME_DIR/tests:$PWD/bin/bin:$PATH"
   - '$HOME_DIR/bin/bin/bats $HOME_DIR/tests/vault.bats'
+  - '$HOME_DIR/bin/bin/bats $HOME_DIR/tests/print_test.sh'
 
   # Clean up
   - sudo docker stop "vault"
