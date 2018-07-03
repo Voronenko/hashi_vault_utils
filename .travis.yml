@@ -1,8 +1,13 @@
 ---
 sudo: required
 
-vault:
-  - 0.10.3
+env:
+  - vault='0.10.3'
+    VAULT_API_FAMILY='0.10'
+  - vault='0.9.6'
+    VAULT_API_FAMILY='0.6'
+  - vault='0.6.0'
+    VAULT_API_FAMILY='0.6'
 
 # whitelist
 #branches:
