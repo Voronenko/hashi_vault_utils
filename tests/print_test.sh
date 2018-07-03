@@ -1,7 +1,7 @@
 #!/bin/sh
 vault_status.sh
 
-vault_init.sh 2>1
+vault_init.sh || true
 
 vault_auth.sh abfd0e04-7922-6850-e1bd-f02c325f1e2c
 
