@@ -17,13 +17,13 @@
 }
 
 @test "vault_write.sh works " {
-  result="$(vault_write.sh secret/test thetest| grep Success)"
-  [ "$result" == "Success! Data written to: secret/test" ]
+  result="$(vault_write.sh secret/test thetest| grep version)"
+  [ "$result" == "version          1" ]
 }
 
 @test "vault_read.sh works " {
   result="$(vault_read.sh secret/test | grep value)"
-  [ "$result" == "value               thetest" ]
+  [ "$result" == "value    thetest" ]
 }
 
 @test "vault_policy.sh works " {
