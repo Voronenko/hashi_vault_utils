@@ -12,7 +12,8 @@
 
 @test "vault_auth.sh works " {
   result="$(vault_auth.sh abfd0e04-7922-6850-e1bd-f02c325f1e2c | grep Success)"
-  [ "$result" == "Successfully authenticated! You are now logged in." ]
+  echo "==== $result ===="
+  [ "$result" == "Success! You are now authenticated. The token information displayed below" ]
 }
 
 @test "vault_write.sh works " {
