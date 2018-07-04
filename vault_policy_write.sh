@@ -14,5 +14,11 @@ then
   exit 1
 fi
 
+if [[ -z "$VAULT_API_FAMILY" ]]; then
+echo vault policy write --address="$VAULT_BASE_URL" $1 $2
+vault policy write --address="$VAULT_BASE_URL" $1 $2
+else
 echo vault policy-write --address="$VAULT_BASE_URL" $1 $2
 vault policy-write --address="$VAULT_BASE_URL" $1 $2
+fi
+

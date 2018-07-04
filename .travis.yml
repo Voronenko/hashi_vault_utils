@@ -1,11 +1,18 @@
 ---
 sudo: required
 
+env:
+  - vault='0.10.3'
+  - vault='0.9.6'
+    VAULT_API_FAMILY='0_9'
+  - vault='0.6.0'
+    VAULT_API_FAMILY='0_6'
+
 # whitelist
-branches:
-  only:
-    - master
-    - develop
+#branches:
+#  only:
+#    - master
+#    - develop
 
 services:
   - docker
@@ -14,19 +21,20 @@ before_install:
   - "export HOME_DIR=$PWD"
   - "git clone https://github.com/sstephenson/bats.git"
   - "mkdir -p bin && cd bats && ./install.sh ../bin"
-  - "sudo docker pull voronenko/vault"
+  - "sudo docker pull voronenko/vault:$vault"
   - "export ROOT_TOKEN=abfd0e04-7922-6850-e1bd-f02c325f1e2c"
-  - "docker run -d -p 8200:8200 --hostname vault --name vault voronenko/vault"
+  - "docker run -d -p 8200:8200 --hostname vault --name vault voronenko/vault:${vault}"
   - "echo ROOT_TOKEN - $ROOT_TOKEN"
   - "export VAULT_ADDR=http://$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' vault):8200"
   - "echo VAULT_ADDR - $VAULT_ADDR"
-  - "wget -O $HOME_DIR/vault_0.6.0_linux_amd64.zip https://releases.hashicorp.com/vault/0.6.0/vault_0.6.0_linux_amd64.zip"
-  - "unzip -d $HOME_DIR/tests $HOME_DIR/vault_0.6.0_linux_amd64.zip && rm $HOME_DIR/vault_0.6.0_linux_amd64.zip && chmod 755 $HOME_DIR/tests/vault"
+  - "wget -O $HOME_DIR/vault_${vault}_linux_amd64.zip https://releases.hashicorp.com/vault/${vault}/vault_${vault}_linux_amd64.zip"
+  - "unzip -d $HOME_DIR/tests $HOME_DIR/vault_${vault}_linux_amd64.zip && rm $HOME_DIR/vault_${vault}_linux_amd64.zip && chmod 755 $HOME_DIR/tests/vault"
 script:
   # execute tests
   - "$HOME_DIR/tests/vault --version"
   - "export PATH=$HOME_DIR:$HOME_DIR/tests:$PWD/bin/bin:$PATH"
-  - '$HOME_DIR/bin/bin/bats $HOME_DIR/tests/vault.bats'
+  - '$HOME_DIR/bin/bin/bats $HOME_DIR/tests/vault${VAULT_API_FAMILY}.bats'
+  - '$HOME_DIR/bin/bin/bats $HOME_DIR/tests/print_test.sh'
 
   # Clean up
   - sudo docker stop "vault"

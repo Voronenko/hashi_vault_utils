@@ -2,9 +2,22 @@
 VAULT_BASE_URL=${VAULT_ADDR-http://localhost:8200}
 if [ -z $1 ]
 then
-echo vault policies -address=$VAULT_BASE_URL
-vault policies -address=$VAULT_BASE_URL
+
+  if [ -z "$VAULT_API_FAMILY" ]; then
+    echo vault policy list -address=$VAULT_BASE_URL
+    vault policy list -address=$VAULT_BASE_URL
+  else
+    echo vault policies -address=$VAULT_BASE_URL
+    vault policies -address=$VAULT_BASE_URL
+  fi
+
 else
-echo vault policies -address=$VAULT_BASE_URL $1 
-vault policies -address=$VAULT_BASE_URL $1
+
+  if [ -z "$VAULT_API_FAMILY" ]; then
+    echo vault policy read $1 -address=$VAULT_BASE_URL
+    vault policy read $1 -address=$VAULT_BASE_URL
+  else
+   echo vault policies $1 -address=$VAULT_BASE_URL
+   vault vault policies $1 -address=$VAULT_BASE_URL
+fi
 fi

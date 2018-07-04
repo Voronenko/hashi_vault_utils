@@ -6,6 +6,11 @@ Educational repository demonstrating approaches for safe secure deployment of pa
 
 [![Build Status](https://travis-ci.org/Voronenko/hashi_vault_utils.svg?branch=master)](https://travis-ci.org/Voronenko/hashi_vault_utils)
 
+# Updates
+
+Batches were updated to conform with vault API versions 0_9 and 0_10 ;
+If your vault is less than 0.10.0 , - you need to checkout 0.9.0 branch.
+
 # Background
 "Don’t Check Passwords into Source Control or Hard-Code Them
 in Your Application

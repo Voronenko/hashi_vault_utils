@@ -12,5 +12,12 @@ then
   exit 1
 fi
 
+if [ -z "$VAULT_API_FAMILY" ]; then
+echo vault kv put -address=$VAULT_BASE_URL $1 value=$2
+vault kv put -address=$VAULT_BASE_URL $1 value=$2
+else
 echo vault write -address=$VAULT_BASE_URL $1 value=$2
 vault write -address=$VAULT_BASE_URL $1 value=$2
+fi
+
+

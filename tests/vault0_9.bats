@@ -17,13 +17,13 @@
 }
 
 @test "vault_write.sh works " {
-  result="$(vault_write.sh secret/test thetest| grep version)"
-  [ "$result" == "version          1" ]
+  result="$(vault_write.sh secret/test thetest| grep Success)"
+  [ "$result" == "Success! Data written to: secret/test" ]
 }
 
 @test "vault_read.sh works " {
   result="$(vault_read.sh secret/test | grep value)"
-  [ "$result" == "value    thetest" ]
+  [ "$result" == "value               thetest" ]
 }
 
 @test "vault_policy.sh works " {
@@ -43,6 +43,6 @@
 
 @test "vault_create_token_with_policy.sh works " {
   result="$(vault_create_token_with_policy.sh demo | grep token_policies)"
-  [ "$result" == 'token_policies       ["default" "demo"]' ]
+  [ "$result" == "token_policies     [default demo]" ]
 }
 
