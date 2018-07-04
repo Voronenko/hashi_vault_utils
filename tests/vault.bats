@@ -43,6 +43,6 @@
 
 @test "vault_create_token_with_policy.sh works " {
   result="$(vault_create_token_with_policy.sh demo | grep token_policies)"
-  [ "$result" == "token_policies     [default demo]" ]
+  [ "$result" == 'policies             ["default" "demo"]' ]
 }
 
