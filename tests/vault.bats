@@ -37,8 +37,8 @@
 }
 
 @test "vault_policy_write.sh works " {
-  result="$(vault_policy_write.sh demo $HOME_DIR/demo/demo.hcl | grep written)"
-  [ "$result" == "Policy 'demo' written." ]
+  result="$(vault_policy_write.sh demo $HOME_DIR/demo/demo.hcl | grep Uploaded)"
+  [ "$result" == "Success! Uploaded policy: demo" ]
 }
 
 @test "vault_create_token_with_policy.sh works " {
