@@ -23,7 +23,7 @@
 
 @test "vault_read.sh works " {
   result="$(vault_read.sh secret/test | grep value)"
-  [ "$result" == "value           	thetest" ]
+  [ "$result" == "value               thetest" ]
 }
 
 @test "vault_policy.sh works " {
