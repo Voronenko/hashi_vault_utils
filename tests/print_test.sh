@@ -5,9 +5,9 @@ vault_init.sh || true
 
 vault_auth.sh abfd0e04-7922-6850-e1bd-f02c325f1e2c
 
-vault_write.sh secret/test thetest
+vault_write.sh secret/test2 thetest2
 
-vault_read.sh secret/test
+vault_read.sh secret/test2
 
 vault_policy.sh
 
