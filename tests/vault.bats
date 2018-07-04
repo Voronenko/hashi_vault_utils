@@ -43,10 +43,6 @@
 
 @test "vault_create_token_with_policy.sh works " {
   result="$(vault_create_token_with_policy.sh demo | grep token_policies)"
-  [ "$result" == "token_policies 	[default demo]" ]
+  [ "$result" == "token_policies     [default demo2]" ]
 }
 
-@test "vault_unseal.sh works " {
-  result="$(vault_unseal.sh abfd0e04-7922-6850-e1bd-f02c325f1e2c | grep already)"
-  [ "$result" == "Vault is already unsealed." ]
-}
